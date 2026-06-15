@@ -1,0 +1,17 @@
+{
+  "name": "monster-pvp-ticket-system",
+  "version": "2.1.0",
+  "description": "Monster PVP - Website + Discord Ticket Bot + MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "mongoose": "^8.5.0"
+  }
+}

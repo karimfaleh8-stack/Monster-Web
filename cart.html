@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلة المشتريات - Monster PVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="background">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="Monster.mp4" type="video/mp4">
+    </video>
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+  </div>
+
+  <nav>
+    <div class="nav-right-side">
+      <strong style="font-size: 1.3rem; color: #00ff88; font-weight: bold; text-shadow: 0 0 10px rgba(0,255,136,0.3); margin-left: 15px;">Monster PVP</strong>
+      <div class="nav-links" style="display: flex; gap: 20px;">
+        <a href="index.html">المنتجات</a>
+        <a href="rules.html">القوانين</a>
+        <a href="cart.html">السلة</a>
+      </div>
+    </div>
+    <div class="nav-left-side">
+      <div id="auth-widget"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="cart-page-container">
+      <div class="cart-header">
+        <span class="cart-title">محتويات السلة</span>
+        <a href="index.html" class="back-to-store">العودة للمتجر ←</a>
+      </div>
+
+      <div id="cart-items-list" style="width:100%; margin-bottom: 20px;"></div>
+
+      <div class="cart-actions">
+        <button class="btn-confirm" onclick="processOrderConfirmation()">تأكيد الطلب</button>
+        <button class="btn-clear" onclick="clearCart()">تفريغ  السلة</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

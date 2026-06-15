@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> المتجر - Monster PVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="background">
+  <img src="images/weblog.jpg" alt="" id="bg-image">
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+</div>
+
+  <nav>
+    <div class="nav-right-side">
+      <strong style="font-size: 1.3rem; color: #00ff88; font-weight: bold; text-shadow: 0 0 10px rgba(0,255,136,0.3); margin-left: 15px;">HELL PVP</strong>
+      <div class="nav-links" style="display: flex; gap: 20px;">
+        <a href="index.html">المتجر </a>
+        <a href="rules.html">القوانين</a>
+        <a href="cart.html">السلة</a>
+      </div>
+    </div>
+    <div class="nav-left-side">
+      <div id="auth-widget"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="product">
+      <div class="product-image">
+        <img src="images/Plus.jpg" alt="Plus Package">
+      </div>
+      <div class="product-info">
+        <h3>Plus Package</h3>
+        <p>لا ترضى بأن تكون لاعباً عادياً في ساحة المعركة. امتلك رتبة الوحش الملكي وتحكّم في مجريات القتال! هذه الباقة صُممت خصيصاً لمن يبحثون عن الهيبة، القوة، والتميز وسط الجميع. ارتدِ وشاح الملوك واجعل الجميع يخشى حضورك.</p>
+        <div class="product-details">
+          <span class="price">5 $</span>
+          <span class="rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <button class="add-btn" onclick="addToCart('Plus Package', 5.00)">أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="images/Clown.jpg" alt="Clown Skin">
+      </div>
+      <div class="product-info">
+        <h3>Clown Skin</h3>
+        <p>تميّز بمظهرك الخارجي والأسطوري داخل اللعبة. أضف سكنك الخاص والنادر إلى شخصيتك، واجعل حضورك في ساحة الـ PVP مرعباً ومثيراً للإعجاب في آن واحد بملابسك المخصصة.</p>
+        <div class="product-details">
+          <span class="price">2 $</span>
+          <span class="rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <button class="add-btn" onclick="addToCart('Clown Skin', 2.00)">أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="images/Fight.jpg" alt="Fight Skin">
+      </div>
+      <div class="product-info">
+        <h3>Fight Skin</h3>
+        <p>النسخة المطورة والمميزة من السكنات القتالية النادرة. اختر مظهرك المخصص لتتنقل به داخل السيرفر وتفرض سيطرتك الكاملة بأسلوب قتالي فريد يلفت الأنظار ويناسب أجواء المواجهات الشرسة.</p>
+        <div class="product-details">
+          <span class="price">2 $</span>
+          <span class="rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <button class="add-btn" onclick="addToCart('Fight Skin', 2.00)">أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="images/Girl.jpg" alt="Girl Skin">
+      </div>
+      <div class="product-info">
+        <h3>Girl Skin</h3>
+        <p>مجموعة حصرية ومميزة من السكنات المخصصة للبنات داخل السيرفر. تصاميم فريدة وعصرية لتتميزي بمظهرك الخاص وتضفي لمسة من الأناقة والتميز أثناء اللعب والمواجهات.</p>
+        <div class="product-details">
+          <span class="price">2 $</span>
+          <span class="rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <button class="add-btn" onclick="addToCart('Girl Skin', 2.00)">أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+         <img src="images/ID.jpg" alt="ID Customization">
+      </div>
+      <div class="product-info">
+        <h3>ID Customization</h3>
+        <p>تمجّد بهويتك الفريدة داخل السيرفر واجعل اسمك ورقماً مميزاً يتردد على ألسنة الجميع. باقة تعديل الـ ID تمنحك طابعاً خاصاً لا يملكه غيرك لتبرز كقائد حقيقي في صفوف الوحوش.</p>
+        <div class="product-details">
+          <span class="price">3 $</span>
+          <span class="rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <button class="add-btn" onclick="addToCart('ID Customization', 3.00)">أضف إلى السلة</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

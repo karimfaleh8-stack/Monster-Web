@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تأكيد الطلب - Monster PVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="background">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="Monster.mp4" type="video/mp4">
+    </video>
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+  </div>
+
+  <nav>
+    <div class="nav-right-side">
+      <strong style="font-size: 1.3rem; color: #00ff88; font-weight: bold; text-shadow: 0 0 10px rgba(0,255,136,0.3); margin-left: 15px;">Monster PVP</strong>
+      <div class="nav-links" style="display: flex; gap: 20px;">
+        <a href="index.html">المنتجات</a>
+        <a href="rules.html">القوانين</a>
+        <a href="cart.html">السلة</a>
+      </div>
+    </div>
+    <div class="nav-left-side">
+      <div id="auth-widget"></div>
+    </div>
+  </nav>
+
+  <div class="container animate-fade-in" style="margin-top: 120px; max-width: 700px;">
+    <div class="checkout-form-container" style="background: rgba(10, 25, 17, 0.75); border: 1px solid rgba(0, 255, 136, 0.15); padding: 40px; border-radius: 20px; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #00ff88; font-size: 2rem; margin-bottom: 10px; font-weight: 700;">إنشاء تذكرة وتأكيد طلبك</h2>
+        <p style="color: #a0aec0; font-size: 0.95rem;">اختر نوع القسم وسيتم فتح التذكرة باسمك وبياناتك فوراً في الديسكورد</p>
+      </div>
+
+      <form id="orderForm" onsubmit="handleFormSubmit(event)">
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="display: block; color: #00ff88; margin-bottom: 8px; font-weight: 600;">👥 نوع التذكرة / القسم المطلوبة:</label>
+          <select id="ticket_type" style="width: 100%; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 12px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;" required>
+            <option value="purchase" style="background: #0d1b14; color: #fff;" selected>🛒 تذكرة موقع (طلب شراء جديد تلقائي)</option>
+            <option value="inquiry" style="background: #0d1b14; color: #fff;">❓ استفسار عام</option>
+            <option value="complaint" style="background: #0d1b14; color: #fff;">⚠️ شكوى على لاعب</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="display: block; color: #e2e8f0; margin-bottom: 8px; font-weight: 600;">👤 اسمك بالكامل:</label>
+          <input type="text" id="player_name" placeholder="اكتب اسمك الحقيقي هنا" style="width: 100%; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 1rem; outline: none;" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 25px;">
+          <label style="display: block; color: #e2e8f0; margin-bottom: 8px; font-weight: 600;">📝 معلومات الديسكورد ديسكربشن (أو التفاصيل):</label>
+          <textarea id="extra_details" rows="4" placeholder="اكتب التفاصيل الإضافية، أو تفاصيل الشكوى، أو معلوماتك المخصصة..." style="width: 100%; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 1rem; outline: none; resize: none;" required></textarea>
+        </div>
+
+        <div style="background: rgba(0, 255, 136, 0.03); border: 1px dashed rgba(0, 255, 136, 0.2); padding: 15px; border-radius: 12px; margin-bottom: 30px; font-size: 0.9rem; color: #cbd5e0; text-align: center;">
+          🔒 سيتم سحب اسم الديسكورد الخاص بك (Username) تلقائياً من خلال حسابك المسجل به في المتجر.
+        </div>
+
+        <div style="display: flex; gap: 15px;">
+          <button type="submit" class="btn-confirm" style="flex: 1; justify-content: center; background: linear-gradient(135deg, #00ff88, #00aa50); padding: 14px; border: none; border-radius: 12px; color: #05140c; font-weight: bold; cursor: pointer; font-size: 1.1rem;">🚀 إرسال وتأكيد فتح التذكرة</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const user = JSON.parse(localStorage.getItem('discord_user'));
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (!user) {
+        showToast("❌ يجب تسجيل الدخول بالديسكورد أولاً لإتمام طلبك!", "error");
+        return;
+      }
+
+      const ticketType = document.getElementById('ticket_type').value;
+      const playerName = document.getElementById('player_name').value;
+      const extraDetails = document.getElementById('extra_details').value;
+
+      const productsList = cart.map(item => `• ${item.name} (${item.price} $)`).join('\n');
+
+      const payload = {
+         discordTag: user.username,
+         type: ticketType,
+         name: playerName,
+         products: productsList || 'لم يتم اختيار منتجات (تذكرة عامة)',
+         extraInfo: extraDetails
+      };
+
+      try {
+         // الطلب يُرسل لنفس السيرفر (مسار نسبي) - لا حاجة لتحديد localhost:3000
+         const botResponse = await fetch('/api/create-ticket', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(payload)
+         });
+         const botData = await botResponse.json();
+
+         if (!botResponse.ok || !botData.success) {
+             showToast(`❌ خطأ من البوت: ${botData.message}`, "error");
+             return;
+         }
+
+         // ملاحظة: لم نعد نرسل أي بيانات مباشرة من المتصفح إلى Discord Webhook
+         // كل التذاكر تُسجَّل وتُحفظ من خلال البوت + قاعدة بيانات MongoDB
+         showToast("✅ تم فتح التذكرة تلقائياً وتوثيق طلبك بالديسكورد!", "success");
+
+         localStorage.removeItem('cart');
+         setTimeout(() => {
+            window.location.href = 'index.html';
+         }, 2000);
+
+      } catch (error) {
+         console.error(error);
+         showToast("❌ حدث خطأ أثناء الاتصال بالبوت، تأكد من تشغيله!", "error");
+      }
+    }
+  </script>
+</body>
+</html>
